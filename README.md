@@ -1,7 +1,7 @@
 ### Hi there 👋
 
 <!--
-**90996399291/90996399291** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+**JMaiaP/JMaiaPa** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
 Here are some ideas to get you started:
 
