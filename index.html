@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Festa Junina Zinete 2025 - Reserva de Mesas</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f1e5;
+            color: #8B4513;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            background-color: #D2691E;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-bottom: 5px solid #8B4513;
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .logo-text {
+            margin-left: 20px;
+            text-align: left;
+        }
+        
+        .logo-text h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: #FFD700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .logo-text p {
+            margin: 5px 0 0;
+            font-size: 1.2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .mesas-section, .contato-section {
+            margin-bottom: 30px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: #D2691E;
+            border-bottom: 2px solid #D2691E;
+            padding-bottom: 10px;
+        }
+        
+        .mesa-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .mesa {
+            background-color: #f0e6d2;
+            border: 2px solid #D2691E;
+            border-radius: 5px;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .mesa:hover {
+            background-color: #D2691E;
+            color: white;
+        }
+        
+        .mesa.reservada {
+            background-color: #8B4513;
+            color: white;
+            cursor: not-allowed;
+        }
+        
+        .mesa.selecionada {
+            background-color: #D2691E;
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .form-reserva {
+            margin-top: 20px;
+            display: none;
+        }
+        
+        button {
+            background-color: #D2691E;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background-color: #8B4513;
+        }
+        
+        footer {
+            background-color: #D2691E;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .mesa-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+            
+            .logo-container {
+                flex-direction: column;
+            }
+            
+            .logo-text {
+                margin-left: 0;
+                margin-top: 15px;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .mesa-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .logo-text h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="arraia.png" alt="Logo Arraia" style="height: 120px;">
+            <div class="logo-text">
+                <h1>Festa Junina Zinete 2025</h1>
+                <p>Reserve sua mesa e venha curtir a melhor festa junina da região!</p>
+                <p>Preço por mesa: R$ 20,00</p>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section class="mesas-section">
+            <h2>Reserva de Mesas</h2>
+            <p>Clique na mesa desejada para reservar (Total: 150 mesas)</p>
+            
+            <div class="mesa-grid" id="mesas-grid">
+                <!-- As mesas de 1 a 150 serão inseridas aqui via JavaScript -->
+            </div>
+            
+            <div class="form-reserva" id="form-reserva">
+                <h3>Reservar Mesa <span id="numero-mesa"></span></h3>
+                <form id="reserva-form">
+                    <div>
+                        <label for="nome">Nome:</label>
+                        <input type="text" id="nome" required>
+                    </div>
+                    <div>
+                        <label for="telefone">Telefone:</label>
+                        <input type="tel" id="telefone" required>
+                    </div>
+                    <button type="submit">Confirmar Reserva</button>
+                </form>
+            </div>
+        </section>
+        
+        <section class="contato-section">
+            <h2>Contato</h2>
+            <p><strong>Coordenação:</strong> Laura Medina</p>
+            <p><strong>Telefone:</strong> (96) 99123-9539</p>
+            <p><strong>Coordenação:</strong> Joyele Brito</p>
+            <p><strong>Telefone:</strong> (96) 99126-4393</p>
+            <p><strong>Chave PIX:</strong> 70314721215</p>
+        </section>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Festa Junina Zinete - Todos os direitos reservados</p>
+    </footer>
+    
+    <script>
+        // Elementos do DOM
+        const mesasGrid = document.getElementById('mesas-grid');
+        const formReserva = document.getElementById('form-reserva');
+        const numeroMesa = document.getElementById('numero-mesa');
+        const reservaForm = document.getElementById('reserva-form');
+        
+        // Variável para armazenar a mesa selecionada
+        let mesaSelecionada = null;
+        
+        // Carregar mesas de 1 a 150
+        function carregarMesas() {
+            mesasGrid.innerHTML = '';
+            
+            for (let i = 1; i <= 150; i++) {
+                const divMesa = document.createElement('div');
+                divMesa.className = 'mesa';
+                divMesa.textContent = i;
+                divMesa.addEventListener('click', () => selecionarMesa(i, divMesa));
+                mesasGrid.appendChild(divMesa);
+            }
+        }
+        
+        // Selecionar mesa
+        function selecionarMesa(numero, elemento) {
+            // Verificar se a mesa já está reservada (simulação)
+            if (elemento.classList.contains('reservada')) {
+                alert('Esta mesa já está reservada!');
+                return;
+            }
+            
+            // Remover seleção anterior
+            if (mesaSelecionada) {
+                mesaSelecionada.elemento.classList.remove('selecionada');
+            }
+            
+            // Selecionar nova mesa
+            mesaSelecionada = {
+                numero: numero,
+                elemento: elemento
+            };
+            
+            elemento.classList.add('selecionada');
+            numeroMesa.textContent = numero;
+            formReserva.style.display = 'block';
+        }
+        
+        // Enviar reserva
+        reservaForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const nome = document.getElementById('nome').value;
+            const telefone = document.getElementById('telefone').value;
+            
+            // Simular envio da reserva
+            alert(`Reserva confirmada!\nMesa: ${mesaSelecionada.numero}\nNome: ${nome}\nTelefone: ${telefone}`);
+            
+            // Marcar mesa como reservada
+            mesaSelecionada.elemento.classList.remove('selecionada');
+            mesaSelecionada.elemento.classList.add('reservada');
+            mesaSelecionada.elemento.removeEventListener('click', selecionarMesa);
+            
+            // Resetar formulário
+            reservaForm.reset();
+            formReserva.style.display = 'none';
+            mesaSelecionada = null;
+        });
+        
+        // Inicializar
+        carregarMesas();
+    </script>
+</body>
+</html>
